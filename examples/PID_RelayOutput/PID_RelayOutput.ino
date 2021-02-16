@@ -20,10 +20,10 @@
 #define RELAY_PIN 6
 
 //Define Variables we'll be connecting to
-double Setpoint, Input, Output;
+float Setpoint, Input, Output;
 
 //Specify the links and initial tuning parameters
-double Kp = 2, Ki = 5, Kd = 1;
+float Kp = 2, Ki = 5, Kd = 1;
 PID myPID(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 
 int WindowSize = 5000;

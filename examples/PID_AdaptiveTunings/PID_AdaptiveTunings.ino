@@ -15,11 +15,11 @@
 #define PIN_OUTPUT 3
 
 //Define Variables we'll be connecting to
-double Setpoint, Input, Output;
+float Setpoint, Input, Output;
 
 //Define the aggressive and conservative Tuning Parameters
-double aggKp = 4, aggKi = 0.2, aggKd = 1;
-double consKp = 1, consKi = 0.05, consKd = 0.25;
+float aggKp = 4, aggKi = 0.2, aggKd = 1;
+float consKp = 1, consKi = 0.05, consKd = 0.25;
 
 //Specify the links and initial tuning parameters
 PID myPID(&Input, &Output, &Setpoint, consKp, consKi, consKd, DIRECT);
@@ -36,7 +36,7 @@ void setup() {
 void loop() {
 	Input = analogRead(PIN_INPUT);
 
-	double gap = abs(Setpoint - Input);    //distance away from setpoint
+	float gap = abs(Setpoint - Input);    //distance away from setpoint
 	if (gap < 10) {                        //we're close to setpoint, use conservative tuning parameters
 		myPID.SetTunings(consKp, consKi, consKd);
 	} else {
